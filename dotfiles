@@ -1,0 +1,47 @@
+# Sorry if this is terrible, got all codes from google searches! Don't really know bash!
+
+repo=~/repos/dotfiles
+files=( bashrc gitconfig vimrc vim )
+
+# First look for the repo
+if [ ! -d $repo/.git ]; then
+    git clone https://github.com/alFReD-NSH/dotfiles $repo/
+else
+    # Make sure the repo is the latest
+    cd $repo
+    git pull -r origin master
+fi
+
+if [[ $1 == c ]]
+then 
+
+    # Now that we got the repo, just copy the files into it...
+    for i in "${files[@]}"
+    do
+        cp -r ~/.$i $repo/$i
+    done
+
+    # Save the path, since we wanna cd to the repo
+    cd $repo
+
+    echo "Now it's time for you to decide to commit or not!"
+
+elif [[ $1 == u ]]
+then 
+    cd $repo
+   
+    # copy everything to the dotfiles from the repo 
+    for i in "${files[@]}"
+    do
+        cp -r $repo/$i .$i 
+    done
+
+    echo "Everything got updated"
+
+else
+    echo "Usage: dotfiles [action] "
+    echo "action would be one of the following"
+    echo "c : copies all the dotfiles to the repo"
+    echo "u : updates all the dotfiles from the repo"
+
+fi

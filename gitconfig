@@ -1,0 +1,14 @@
+[user]
+    name = Farid Neshat
+    email = FaridN_SOAD@yahoo.com
+
+[color]
+    ui = auto
+
+[alias]
+    st = status
+    com = commit
+    br = branch
+    co = checkout
+    df = diff
+    pr = pull -r origin
