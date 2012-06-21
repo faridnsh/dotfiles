@@ -14,7 +14,7 @@ helptags ~/.vim/doc
 " To make sure always the working dir is same as the windows's
 
 au! BufEnter * silent! lcd %:p:h
-"set autochdir
+set autochdir
 
 
 " for libraries
