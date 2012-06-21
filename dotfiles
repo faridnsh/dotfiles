@@ -33,7 +33,7 @@ then
     # copy everything to the dotfiles from the repo 
     for i in "${files[@]}"
     do
-        cp -r $repo/$i .$i 
+        cp -r $repo/$i ~/.$i 
     done
 
     echo "Everything got updated"
