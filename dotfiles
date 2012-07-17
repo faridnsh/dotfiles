@@ -18,7 +18,11 @@ then
     # Now that we got the repo, just copy the files into it...
     for i in "${files[@]}"
     do
-        cp -r ~/.$i $repo/$i
+        if [ -d ~/.$i ]; then
+            cp -r ~/.$i/* $repo/$i
+        else
+            cp -r ~/.$i $repo/$i
+        fi
     done
 
     # Save the path, since we wanna cd to the repo
