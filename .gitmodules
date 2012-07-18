@@ -1,0 +1,3 @@
+[submodule "tabular"]
+	path = tabular
+	url = ./vim/bundle/tabular/.git
