@@ -1,3 +1,9 @@
 [submodule "tabular"]
-	path = tabular
-	url = ./vim/bundle/tabular/.git
+	path = vim/bundle/tabular
+	url = https://github.com/vim-scripts/jsruntime.vim.git
+[submodule "jsruntime.vim"]
+	path = vim/bundle/jsruntime.vim
+	url = https://github.com/vim-scripts/jsruntime.vim.git
+[submodule "tcomment_vim"]
+	path = vim/bundle/tcomment_vim
+	url = https://github.com/tomtom/tcomment_vim.git
