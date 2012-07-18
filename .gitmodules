@@ -1,6 +1,6 @@
 [submodule "tabular"]
 	path = vim/bundle/tabular
-	url = https://github.com/vim-scripts/jsruntime.vim.git
+	url = https://github.com/godlygeek/tabular.git 
 [submodule "jsruntime.vim"]
 	path = vim/bundle/jsruntime.vim
 	url = https://github.com/vim-scripts/jsruntime.vim.git
