@@ -27,8 +27,8 @@ let g:JSLintHighlightErrorLine = 0
 
 " File types and plugins
 au! BufRead,BufNewFile *.coffee set filetype=coffee
-au! BufRead,BufNewFile *.less set filetype=less 
-au! BufRead,BufNewFile *.json set filetype=json 
+au! BufRead,BufNewFile *.less set filetype=less
+au! BufRead,BufNewFile *.json set filetype=json
 
 fun! s:DetectNode()
     if getline(1) == '#!/usr/bin/env node'
@@ -69,3 +69,5 @@ function! VaryTabs()
   endif
 endfunction
 inoremap <Tab> <C-R>=VaryTabs()<CR>
+
+set background=dark

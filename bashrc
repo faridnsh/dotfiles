@@ -151,10 +151,12 @@ export -f vimo
 
 # Some nvm related stuff...
 . ~/nvm/nvm.sh
-nvm use v0.6.19
+nvm use v0.8.6
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # VIM bash bindings FTW!
 set -o vi 
 
 PATH="~/packages/bin/:$PATH"
+
+export LD_LIBRARY_PATH="/home/alfred/iCall/libs"
