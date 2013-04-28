@@ -151,7 +151,7 @@ export -f vimo
 
 # Some nvm related stuff...
 . ~/nvm/nvm.sh
-nvm use v0.8.6
+nvm use 0.10
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 
 # VIM bash bindings FTW!
