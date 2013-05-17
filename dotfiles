@@ -6,10 +6,6 @@ files=( bashrc gitconfig vimrc vim )
 # First look for the repo
 if [ ! -d $repo/.git ]; then
     git clone https://github.com/alFReD-NSH/dotfiles $repo/
-else
-    # Make sure the repo is the latest
-    cd $repo
-    git pull -r origin master
 fi
 
 if [[ $1 == c ]]
