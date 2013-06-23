@@ -123,7 +123,7 @@ alias rd='rm -rf'
 alias unzips="python -c \"import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall(sys.argv[1] if len(sys.argv) == 2 else '.')\""
 
 # Searches for js files that are not minified and also add line number
-alias search="find . -not -name '*min*' -name '*.js' | xargs grep -n"
+alias search="find . -print0 -not -name '*min*' -name '*.js' | xargs -0 grep -n"
 
 # Usage : vimo file:linenumber >>> Will open a file in that line number in vim
 
@@ -158,5 +158,3 @@ nvm use 0.10
 set -o vi 
 
 PATH="~/packages/bin/:$PATH"
-
-export LD_LIBRARY_PATH="/home/alfred/iCall/libs"
