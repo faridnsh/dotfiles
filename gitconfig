@@ -12,5 +12,6 @@
     co = checkout
     df = diff
     pr = pull -r origin
+    lg = log --oneline --graph --decorate --all
 [credential]
 	helper = cache --timeout=3600
