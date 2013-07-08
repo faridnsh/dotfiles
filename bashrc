@@ -153,6 +153,7 @@ export -f vimo
 . ~/nvm/nvm.sh
 nvm use 0.10
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
+. ~/.git-completion.bash
 
 # VIM bash bindings FTW!
 set -o vi 

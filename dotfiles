@@ -1,7 +1,7 @@
 # Sorry if this is terrible, got all codes from google searches! Don't really know bash!
 
 repo=~/repos/dotfiles
-files=( bashrc gitconfig vimrc vim )
+files=( bashrc gitconfig vimrc vim jshintrc git-completion.bash )
 
 # First look for the repo
 if [ ! -d $repo/.git ]; then
