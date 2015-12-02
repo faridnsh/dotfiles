@@ -150,12 +150,20 @@ vimo(){
 export -f vimo
 
 # Some nvm related stuff...
-. ~/nvm/nvm.sh
-nvm use 0.10
+. ~/.nvm/nvm.sh
+nvm use stable
+
 [[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
 . ~/.git-completion.bash
+. <(npm completion)
 
 # VIM bash bindings FTW!
 set -o vi 
 
 PATH="~/packages/bin/:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+source '/home/farid/packages/google-cloud-sdk/path.bash.inc'
+
+# The next line enables shell command completion for gcloud.
+source '/home/farid/packages/google-cloud-sdk/completion.bash.inc'

@@ -96,4 +96,3 @@ function! Req()
   exec "normal! $a\n" . str . " = require('" . str . "');"
 
 endfunction
-

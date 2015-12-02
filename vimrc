@@ -42,9 +42,9 @@ filetype indent on
 filetype plugin on
 
 " for tabs
-set ts=4
+set ts=2
 set expandtab
-set sw=4
+set sw=2
 
 vnoremap > >gv
 vnoremap < <gv
@@ -71,3 +71,8 @@ endfunction
 inoremap <Tab> <C-R>=VaryTabs()<CR>
 
 set background=dark
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"

@@ -17,3 +17,7 @@
 	helper = cache --timeout=3600
 [remote "origin"]
 	fetch = +refs/pull/*/head:refs/remotes/origin/pr/*
+[push]
+	default = simple
+[core]
+	autocrlf = input
