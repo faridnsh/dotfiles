@@ -10,3 +10,6 @@
 [submodule "vim/bundle/vim-nodejs-errorformat"]
 	path = vim/bundle/vim-nodejs-errorformat
     url = git://github.com/felixge/vim-nodejs-errorformat.git
+[submodule "vim/bundle/puppet"]
+	path = vim/bundle/puppet
+	url = git://github.com/rodjek/vim-puppet.git

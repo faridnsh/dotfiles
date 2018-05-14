@@ -38,6 +38,8 @@ endfun
 
 autocmd BufNewFile,BufRead * call s:DetectNode()
 
+autocmd BufWritePre *.pp call puppet#align#AlignHashrockets()
+
 filetype indent on
 filetype plugin on
 
@@ -76,3 +78,8 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+
+let g:terraform_align=1
+
+autocmd FileType terraform setlocal commentstring=#%s

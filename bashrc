@@ -13,8 +13,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=-1
+HISTFILESIZE=-1
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -23,6 +23,8 @@ shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
+
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -89,7 +91,6 @@ alias l='ls -CF'
 # For Mac OS X colors
 export CLICOLOR=1
 # export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
-export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;35;40'
 
 
@@ -160,10 +161,19 @@ nvm use stable
 # VIM bash bindings FTW!
 set -o vi 
 
-PATH="~/packages/bin/:$PATH"
+PATH="/home/farid/Packages/bin/:/home/farid/Packages/go/bin:/home/farid/.local/bin:$PATH"
+source $HOME/.cargo/env
+export GOPATH="/home/farid/repos/go"
 
-# The next line updates PATH for the Google Cloud SDK.
-source '/home/farid/packages/google-cloud-sdk/path.bash.inc'
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[ -f /home/farid/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /home/farid/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[ -f /home/farid/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /home/farid/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
 
-# The next line enables shell command completion for gcloud.
-source '/home/farid/packages/google-cloud-sdk/completion.bash.inc'
+source <(kubectl completion bash)
+
+alias t='sleep 1; p | { read text; xdotool type $text; }'
+
+export NODE_ENV=development
