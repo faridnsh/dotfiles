@@ -21,3 +21,6 @@
 	default = simple
 [core]
 	autocrlf = input
+	excludesfile = /Users/farid/.gitignore
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/

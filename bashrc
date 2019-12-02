@@ -5,6 +5,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
+SHELL_SESSION_HISTORY=0
+
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
@@ -13,8 +15,8 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=-1
-HISTFILESIZE=-1
+HISTSIZE=
+HISTFILESIZE=
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -24,7 +26,7 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
-PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+PROMPT_COMMAND="history -a; $RPOMPT_COMMAND"
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -93,11 +95,6 @@ export CLICOLOR=1
 # export LSCOLORS=gxBxhxDxfxhxhxhxhxcxcx
 export GREP_COLOR='1;35;40'
 
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -111,14 +108,18 @@ fi
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
+    . /etc/bash_completion &
 fi
 
 # You will know how awesome are these things if you use them...
-alias p='xclip -o -selection clipboard'
-alias c='xclip -selection clipboard'
+#alias p='xclip -o -selection clipboard'
+#alias c='xclip -selection clipboard'
+alias p='pbpaste'
+alias c='pbcopy'
 alias g='git'
 alias rd='rm -rf'
+alias vim="mvim -v"
+alias vi="vim"
 
 # unzip stream, will extract everything going to its stdin
 alias unzips="python -c \"import zipfile,sys,StringIO;zipfile.ZipFile(StringIO.StringIO(sys.stdin.read())).extractall(sys.argv[1] if len(sys.argv) == 2 else '.')\""
@@ -150,30 +151,46 @@ vimo(){
 
 export -f vimo
 
-# Some nvm related stuff...
-. ~/.nvm/nvm.sh
+export NVM_DIR="$HOME/.nvm"
+. "/usr/local/opt/nvm/nvm.sh"
 nvm use stable
 
-[[ -r $NVM_DIR/bash_completion ]] && . $NVM_DIR/bash_completion
-. ~/.git-completion.bash
+. /usr/local/opt/nvm/etc/bash_completion.d/nvm &
+. ~/.git-completion.bash &
 . <(npm completion)
 
 # VIM bash bindings FTW!
 set -o vi 
 
-PATH="/home/farid/Packages/bin/:/home/farid/Packages/go/bin:/home/farid/.local/bin:$PATH"
-source $HOME/.cargo/env
-export GOPATH="/home/farid/repos/go"
-
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[ -f /home/farid/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash ] && . /home/farid/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.bash
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[ -f /home/farid/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash ] && . /home/farid/.nvm/versions/node/v8.9.4/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.bash
+#source $HOME/.cargo/env
+export GOPATH="/Users/farid/repos/go"
+PATH="/Users/farid/Library/Python/3.7/bin:$GOPATH/bin:$PATH"
 
 source <(kubectl completion bash)
 
 alias t='sleep 1; p | { read text; xdotool type $text; }'
 
 export NODE_ENV=development
+[ -f /usr/local/etc/bash_completion ] && . /usr/local/etc/bash_completion
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/repos
+VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python3
+source $(which virtualenvwrapper.sh)
+
+#AWSume alias to source the AWSume script
+alias awsume=". awsume"
+
+#Auto-Complete function for AWSume
+
+_awsume() {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+    opts=$(awsumepy --rolesusers)
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    return 0
+}
+complete -F _awsume awsume
+

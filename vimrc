@@ -23,8 +23,6 @@ au! BufEnter * silent! lcd %:p:h
 " for libraries
 call pathogen#infect()
 
-let g:JSLintHighlightErrorLine = 0
-
 " File types and plugins
 au! BufRead,BufNewFile *.coffee set filetype=coffee
 au! BufRead,BufNewFile *.less set filetype=less
@@ -38,7 +36,7 @@ endfun
 
 autocmd BufNewFile,BufRead * call s:DetectNode()
 
-autocmd BufWritePre *.pp call puppet#align#AlignHashrockets()
+"autocmd BufWritePre *.pp call puppet#align#AlignHashrockets()
 
 filetype indent on
 filetype plugin on
